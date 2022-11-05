@@ -20,7 +20,7 @@ module.exports = {
       name: '✅ test:\tAdding tests cases',
     },
     {
-      value: ':truck: chore',
+      value: ':truck:',
       name: '🚚 chore:\tChanges to the build process or auxiliary tools\n\t\tand libraries such as documentation generation',
     },
     {value: ':rewind: revert', name: '⏪️ revert:\tRevert to a commit'},
@@ -40,7 +40,7 @@ module.exports = {
     fix: [{name: 'merge'}, {name: 'style'}, {name: 'test'}, {name: 'hotfix'}],
   },
 
-  allowCustomScopes: true,
+  allowCustomScopes: false,
   allowBreakingChanges: ['feat', 'fix'],
   // skip any questions you want
   skipQuestions: ['footer', 'breaking'],
