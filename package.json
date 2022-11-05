@@ -43,7 +43,7 @@
   "lint-staged": {
     "src/**/*": [
       "yarn lint",
-      "yarn test:staged"
+      "yarn test:staged --passWithNoTests"
     ]
   },
   "license": "MIT",
