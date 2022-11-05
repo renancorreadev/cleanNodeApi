@@ -28,6 +28,11 @@
     "standard-version": "^9.5.0",
     "typescript": "^4.8.4"
   },
+  "lint-staged": {
+    "src/**/*": [
+      "eslint 'src/**' --fix"
+    ]
+  },
   "license": "MIT",
   "config": {
     "commitizen": {
