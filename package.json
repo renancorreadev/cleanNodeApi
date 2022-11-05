@@ -6,11 +6,13 @@
   "author": "renancorreadev <producer@skynance.net>",
   "scripts": {
     "release": "standard-version",
-    "commit": "./node_modules/cz-customizable/standalone.js"
+    "commit": "./node_modules/cz-customizable/standalone.js",
+    "test": "jest"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.0.2",
     "@commitlint/config-conventional": "^17.0.2",
+    "@types/jest": "^29.2.2",
     "@types/node": "^18.11.9",
     "@typescript-eslint/eslint-plugin": "^5.42.0",
     "commitizen": "^4.2.4",
@@ -23,9 +25,11 @@
     "eslint-plugin-n": "^15.4.0",
     "eslint-plugin-promise": "^6.1.1",
     "husky": "^8.0.1",
+    "jest": "^29.2.2",
     "lint-staged": "^13.0.3",
     "release": "^6.3.0",
     "standard-version": "^9.5.0",
+    "ts-jest": "^29.0.3",
     "typescript": "^4.8.4"
   },
   "lint-staged": {
