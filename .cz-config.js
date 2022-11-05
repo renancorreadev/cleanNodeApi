@@ -1,8 +1,8 @@
 module.exports = {
   types: [
-    {value: ':sparkles: feat', name: '✨ feat:\tAdding a new feature'},
-    {value: ':bug: fix', name: '🐛 fix:\tFixing a bug'},
-    {value: ':memo: docs', name: '📝 docs:\tAdd or update documentation'},
+    {value: ':sparkles: ', name: '✨ feat:\tAdding a new feature'},
+    {value: ':bug: ', name: '🐛 fix:\tFixing a bug'},
+    {value: ':memo: ', name: '📝 docs:\tAdd or update documentation'},
     {
       value: ':lipstick: ',
       name: '💄 style:\tAdd or update styles, ui or ux',
