@@ -8,9 +8,9 @@
     "prepare": "husky install",
     "release": "standard-version",
     "commit": "./node_modules/cz-customizable/standalone.js",
-    "test": "jest",
     "lint": "eslint src --max-warnings=0",
-    "test:staged": "jest"
+    "test": "jest --passWithNoTests --watch",
+    "test:staged": "jest --passWithNoTests"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.0.2",
