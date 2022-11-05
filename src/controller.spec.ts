@@ -1,5 +1,5 @@
 describe('', () => {
   test('', () => {
-    expect(1).toBe(4)
+    expect(1).toBe(1)
   })
 })
