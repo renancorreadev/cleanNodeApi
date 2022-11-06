@@ -1,5 +1,6 @@
+import { HttpResponse, HttpRequest } from "../protocols/http";
 export class SignUpController {
-  handle(httpRequest: any): any {
+  handle(httpRequest: HttpRequest): HttpResponse {
     // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
     if (!httpRequest.body.name) {
       return {
@@ -14,5 +15,8 @@ export class SignUpController {
         body: new Error("Missing param: Email")
       };
     }
+    return {
+      statusCode: 400
+    };
   }
 }
