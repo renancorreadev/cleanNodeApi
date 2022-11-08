@@ -10,5 +10,5 @@ export interface AddAccountModelIFace {
  * @interface AccountModelIFace is a database (BD) model that represents an account
  */
 export interface AddAccountIFace {
-  add: (account: AddAccountModelIFace) => AccountModelIFace;
+  add: (account: AddAccountModelIFace) => Promise<AccountModelIFace>;
 }
