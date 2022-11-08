@@ -3,11 +3,11 @@ import {
   Controller,
   EmailValidatorIFace,
   HttpResponse,
-  HttpRequest
-} from "../protocols";
-import { MissingParamError, InvalidParamError } from "../errors";
-import { badRequest, serverError } from "../helpers/http-helper";
-import { AddAccountIFace } from "../../domain/usecases/add-account";
+  HttpRequest,
+  AddAccountIFace
+} from "./signup-protocols";
+import { MissingParamError, InvalidParamError } from "../../errors";
+import { badRequest, serverError } from "../../helpers/http-helper";
 
 export class SignUpController implements Controller {
   private readonly emailValidator: EmailValidatorIFace;
