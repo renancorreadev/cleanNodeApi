@@ -1,18 +1,24 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import {
   Controller,
-  EmailValidator,
+  EmailValidatorIFace,
   HttpResponse,
   HttpRequest
 } from "../protocols";
 import { MissingParamError, InvalidParamError } from "../errors";
 import { badRequest, serverError } from "../helpers/http-helper";
+import { AddAccountIFace } from "../../domain/usecases/add-account";
 
 export class SignUpController implements Controller {
-  private readonly emailValidator: EmailValidator;
+  private readonly emailValidator: EmailValidatorIFace;
+  private readonly addAccount: AddAccountIFace;
 
-  constructor(emailValidator: EmailValidator) {
+  constructor(
+    emailValidator: EmailValidatorIFace,
+    addAccount: AddAccountIFace
+  ) {
     this.emailValidator = emailValidator;
+    this.addAccount = addAccount;
   }
 
   handle(httpRequest: HttpRequest): HttpResponse {
@@ -30,7 +36,7 @@ export class SignUpController implements Controller {
         }
       }
 
-      const { email, password, passwordConfirmation } = httpRequest.body;
+      const { name, email, password, passwordConfirmation } = httpRequest.body;
       if (password !== passwordConfirmation) {
         return badRequest(new InvalidParamError("passwordConfirmation"));
       }
@@ -39,6 +45,13 @@ export class SignUpController implements Controller {
       if (!isValid) {
         return badRequest(new InvalidParamError("email"));
       }
+
+      /** Add data received to method add account */
+      this.addAccount.add({
+        name,
+        email,
+        password
+      });
     } catch (error) {
       return serverError();
     }
