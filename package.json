@@ -21,6 +21,7 @@
     "@commitlint/config-conventional": "^17.0.2",
     "@types/jest": "^29.2.2",
     "@types/node": "^18.11.9",
+    "@types/validator": "^13.7.10",
     "@typescript-eslint/eslint-plugin": "^5.42.0",
     "@typescript-eslint/parser": "^5.0.1",
     "commitizen": "^4.2.4",
@@ -55,5 +56,8 @@
     "commitizen": {
       "path": "cz-customizable"
     }
+  },
+  "dependencies": {
+    "validator": "^13.7.0"
   }
 }
