@@ -1,4 +1,26 @@
+import { EncrypterIFace } from "../../protocols/encrypter";
 import { DbAddAccount } from "./db-add-account";
+
+interface SutTypes {
+  sut: DbAddAccount;
+  encrypterStub: EncrypterIFace;
+}
+
+const makeSut = (): SutTypes => {
+  class EncrypterStub {
+    async encrypt(value: string): Promise<string> {
+      return await new Promise((resolve) => resolve("hashed_password"));
+    }
+  }
+
+  const encrypterStub = new EncrypterStub();
+  const sut = new DbAddAccount(encrypterStub);
+
+  return {
+    sut,
+    encrypterStub
+  };
+};
 
 /**
  * @test receber os dados formatados corretamente pro
@@ -8,14 +30,8 @@ import { DbAddAccount } from "./db-add-account";
  */
 describe("DbAccount UseCase", () => {
   test("Should call Encrypter with correct password", async () => {
-    class EncrypterStub {
-      async encrypt(value: string): Promise<string> {
-        return await new Promise((resolve) => resolve("hashed_password"));
-      }
-    }
+    const { sut, encrypterStub } = makeSut();
 
-    const encrypterStub = new EncrypterStub();
-    const sut = new DbAddAccount(encrypterStub);
     const encrypterSpy = jest.spyOn(encrypterStub, "encrypt");
 
     const accountData = {
