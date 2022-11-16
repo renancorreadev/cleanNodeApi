@@ -1,4 +1,4 @@
-import { EmailValidatorIFace } from "../presentation/protocols/email-validator";
+import { EmailValidatorIFace } from "../../../presentation/protocols/email-validator";
 import validator from "validator";
 
 /* It's a class that implements the EmailValidatorIFace interface and uses the

@@ -1,9 +1,9 @@
 import {
   AddAccountIFace,
-  AddAccountModelIFace
-} from "../../../domain/usecases/add-account";
-import { AccountModelIFace } from "../../../domain/models/account";
-import { EncrypterIFace } from "../../protocols/encrypter";
+  AddAccountModelIFace,
+  AccountModelIFace,
+  EncrypterIFace
+} from "./db-add-account.protocols";
 
 export class DbAddAccount implements AddAccountIFace {
   private readonly encrypter: EncrypterIFace;

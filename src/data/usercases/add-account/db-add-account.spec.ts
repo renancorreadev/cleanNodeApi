@@ -1,4 +1,4 @@
-import { EncrypterIFace } from "../../protocols/encrypter";
+import { EncrypterIFace } from "./db-add-account.protocols";
 import { DbAddAccount } from "./db-add-account";
 
 /* Defining the types of the sut and the encrypterStub. */
