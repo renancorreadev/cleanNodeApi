@@ -1,14 +1,15 @@
 import { EncrypterIFace } from "../../protocols/encrypter";
 import { DbAddAccount } from "./db-add-account";
 
+/* Defining the types of the sut and the encrypterStub. */
 interface SutTypes {
   sut: DbAddAccount;
   encrypterStub: EncrypterIFace;
 }
 
 /**
- * that is responsible for encrypting a string
- * @returns {EncrypterIFace}
+ * It returns an instance of the EncrypterStub class
+ * @returns A new instance of the EncrypterStub class.
  */
 const makeEncrypter = (): EncrypterIFace => {
   class EncrypterStub implements EncrypterIFace {
@@ -21,9 +22,9 @@ const makeEncrypter = (): EncrypterIFace => {
 };
 
 /**
- * create an instance of DbAddAccount with parameter
- * informed of the return of encrypterStub
- * @returns {encrypterStub & sut }
+ * It creates a new instance of DbAddAccount and returns it along with its
+ * dependencies
+ * @returns The sut and the encrypterStub
  */
 const makeSut = (): SutTypes => {
   const encrypterStub = makeEncrypter();
@@ -35,12 +36,7 @@ const makeSut = (): SutTypes => {
   };
 };
 
-/**
- * @test receber os dados formatados corretamente pro
- * nosso Controller e receber o nome e senha,
- * recebe os dados e insere os usuarios
- * criando uma conta criptografando a senha
- */
+/* A test for the DbAddAccount class. */
 describe("DbAccount UseCase", () => {
   test("Should call Encrypter with correct password", async () => {
     const { sut, encrypterStub } = makeSut();

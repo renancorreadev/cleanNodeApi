@@ -1,5 +1,6 @@
 import { AccountModelIFace } from "../models/account";
 
+/* A type definition for the `add` method. */
 export interface AddAccountModelIFace {
   name: string;
   email: string;
@@ -7,6 +8,7 @@ export interface AddAccountModelIFace {
 }
 
 /**
+ * A type definition for the `add` method
  * @interface AccountModelIFace is a database (BD) model that represents an account
  */
 export interface AddAccountIFace {

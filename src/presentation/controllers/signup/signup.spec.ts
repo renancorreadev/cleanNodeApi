@@ -11,6 +11,11 @@ import {
   AddAccountIFace
 } from "./signup-protocols";
 
+/**
+ * It returns a new instance of a class that implements the EmailValidatorIFace
+ * interface
+ * @returns A new instance of EmailValidatorStub
+ */
 const makeEmailValidator = (): EmailValidatorIFace => {
   class EmailValidatorStub implements EmailValidatorIFace {
     isValid(email: string): boolean {
@@ -21,6 +26,10 @@ const makeEmailValidator = (): EmailValidatorIFace => {
   return new EmailValidatorStub();
 };
 
+/**
+ * It returns a class that implements the AddAccountIFace interface
+ * @returns A new instance of the AddAccountStub class.
+ */
 const makeAddAccount = (): AddAccountIFace => {
   class AddAccountStub implements AddAccountIFace {
     async add(account: AddAccountModelIFace): Promise<AccountModelIFace> {
@@ -44,6 +53,11 @@ interface SutTypes {
   addAccountStub: AddAccountIFace;
 }
 
+/**
+ * @note It creates a new instance of the SignUpController class, passing the stubs as
+ * dependencies
+ * @returns An object with the sut, emailValidatorStub and addAccountStub
+ */
 const makeSut = (): SutTypes => {
   const emailValidatorStub = makeEmailValidator();
   const addAccountStub = makeAddAccount();
@@ -56,6 +70,7 @@ const makeSut = (): SutTypes => {
   };
 };
 
+/* The above code is testing the SignupController. */
 describe("SignupController", () => {
   test("Should return 400 if no name is provided", async () => {
     const { sut } = makeSut();

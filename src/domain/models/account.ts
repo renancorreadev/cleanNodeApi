@@ -1,4 +1,5 @@
 /**
+ * A TypeScript interface.
  * @interface AccountModelIFace is model Database return to account model.
  */
 
