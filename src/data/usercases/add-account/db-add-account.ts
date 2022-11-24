@@ -2,19 +2,25 @@ import {
   AddAccountIFace,
   AddAccountModelIFace,
   AccountModelIFace,
-  EncrypterIFace
+  EncrypterIFace,
+  AddAccountRepositoryIFace
 } from "./db-add-account.protocols";
 
 export class DbAddAccount implements AddAccountIFace {
   private readonly encrypter: EncrypterIFace;
+  private readonly addAccountRepository: AddAccountRepositoryIFace;
 
   /**
    * The constructor function takes an object that implements the EncrypterIFace
    * interface and assigns it to the encrypter property
    * @param {EncrypterIFace} encrypter - EncrypterIFace
    */
-  constructor(encrypter: EncrypterIFace) {
+  constructor(
+    encrypter: EncrypterIFace,
+    addAccountRepository: AddAccountRepositoryIFace
+  ) {
     this.encrypter = encrypter;
+    this.addAccountRepository = addAccountRepository;
   }
 
   /**
@@ -26,8 +32,15 @@ export class DbAddAccount implements AddAccountIFace {
    * @param {AddAccountModelIFace} account - AddAccountModelIFace
    * @returns A promise that resolves to an AccountModelIFace
    */
-  async add(account: AddAccountModelIFace): Promise<AccountModelIFace> {
-    await this.encrypter.encrypt(account.password);
+  async add(accountData: AddAccountModelIFace): Promise<AccountModelIFace> {
+    const hashedPassword = await this.encrypter.encrypt(accountData.password);
+    await this.addAccountRepository.add(
+      // create a new object to transfer value of accountData to new value password
+      Object.assign({}, accountData, {
+        password: hashedPassword
+      })
+    );
+
     return await new Promise((resolve) =>
       resolve({
         id: "valid_id",
