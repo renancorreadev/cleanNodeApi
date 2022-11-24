@@ -8,7 +8,7 @@ export class BcryptAdapter implements EncrypterIFace {
     this.salt = salt;
   }
 
-  async encrypt(value: string): Promise<string> {
-    return await bcrypt.hash(value, this.salt);
+  async encrypt(values: string): Promise<string> {
+    return await bcrypt.hash(values, this.salt);
   }
 }
