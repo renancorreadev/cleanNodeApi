@@ -34,20 +34,13 @@ export class DbAddAccount implements AddAccountIFace {
    */
   async add(accountData: AddAccountModelIFace): Promise<AccountModelIFace> {
     const hashedPassword = await this.encrypter.encrypt(accountData.password);
-    await this.addAccountRepository.add(
+    const account = await this.addAccountRepository.add(
       // create a new object to transfer value of accountData to new value password
       Object.assign({}, accountData, {
         password: hashedPassword
       })
     );
 
-    return await new Promise((resolve) =>
-      resolve({
-        id: "valid_id",
-        name: "valid_name",
-        email: "valid_email",
-        password: "hashed_password"
-      })
-    );
+    return account;
   }
 }
