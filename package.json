@@ -1,6 +1,6 @@
 {
   "name": "clean-node-api",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "index.js",
   "repository": "https://github.com/renancorreadev/cleanNodeApi.git",
   "author": "renancorreadev <producer@skynance.net>",
@@ -19,6 +19,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.0.2",
     "@commitlint/config-conventional": "^17.0.2",
+    "@types/bcrypt": "^5.0.0",
     "@types/jest": "^29.2.2",
     "@types/node": "^18.11.9",
     "@types/validator": "^13.7.10",
@@ -58,6 +59,7 @@
     }
   },
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "validator": "^13.7.0"
   }
 }
