@@ -9,6 +9,7 @@ export class BcryptAdapter implements EncrypterIFace {
   }
 
   async encrypt(values: string): Promise<string> {
-    return await bcrypt.hash(values, this.salt);
+    const hash = await bcrypt.hash(values, this.salt);
+    return hash;
   }
 }
