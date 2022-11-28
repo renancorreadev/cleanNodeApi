@@ -16,8 +16,6 @@ export class AccountMongoRepository implements AddAccountRepositoryIFace {
       password: "any_password"
     };
 
-    const { _id, ...accountWithoutId } = account;
-
-    return Object.assign({}, accountWithoutId, { id: _id });
+    return MongoHelper.map(account);
   }
 }
