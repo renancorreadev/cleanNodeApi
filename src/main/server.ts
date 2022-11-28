@@ -1,7 +1,7 @@
 /**
- * Camada que fica altamente acoplada
- * Não necessario desenvolver testes unitarios porem é importante desenvolver testes
- * de integração.
+ * Layer that is highly coupled
+ * It is not necessary to develop unit tests, but it is important to develop tests
+ * integration.
  */
 import app from "./config/app";
 
