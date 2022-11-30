@@ -9,7 +9,7 @@ const config: Config.InitialOptions = {
   clearMocks: true,
   collectCoverage: true,
   coverageDirectory: "coverage",
-  collectCoverageFrom: ["<rootDir>/src/**/*.ts"],
+  collectCoverageFrom: ["<rootDir>/src/**/*.ts", "!<rootDir>/src/main/**"],
   testEnvironment: "node",
   transform: {
     ".+\\.ts$": "ts-jest"
