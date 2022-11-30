@@ -4,11 +4,11 @@ import { AccountMongoRepository } from "./account";
 /** Test Integration to MongoDB */
 describe("Account Mongo Repository", () => {
   /** Pre initialize on tests */
+  const mongoURL =
+    process.env.MONGO_URL !== undefined ? process.env.MONGO_URL : "";
 
   beforeAll(async () => {
-    await MongoHelper.connect(
-      process.env.MONGO_URL != null ? process?.env?.MONGO_URL : ""
-    );
+    await MongoHelper.connect(mongoURL);
   });
 
   /** Pos Initialize on tests */
@@ -29,9 +29,9 @@ describe("Account Mongo Repository", () => {
     const sut = makeSut();
 
     const account = await sut.add({
-      name: "",
-      email: "",
-      password: ""
+      name: "any_name",
+      email: "any_email@gmail.com.br",
+      password: "any_password"
     });
 
     /** toBeTruthy is not undefined or null */
